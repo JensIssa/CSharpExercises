@@ -1,50 +1,83 @@
-﻿namespace ClassLibrary1;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+
+namespace ClassLibrary1;
 
 public class Service: IService
 {
     public object FindElement(IEnumerable<object> data, int index)
     {
-        throw new NotImplementedException();
+        return data.ElementAt(index);
     }
 
     public bool AreTheseStringsEqual(string str1, string str2)
     {
-        throw new NotImplementedException();
+        return str1.Equals(str2);
     }
 
     public int Factorial(int n)
     {
-        throw new NotImplementedException();
+        int number = n;
+        for (int i = number - 1; i >=1; i-- )
+        {
+            n = n * i;
+        }
+
+        return n;
     }
 
     public int Fibonacci(int n)
     {
-        throw new NotImplementedException();
+        if (n < 2)
+            return n;
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 
     public IEnumerable<int> FindValuesGreaterThan(IEnumerable<int> data, int value)
     {
-        throw new NotImplementedException();
+        IEnumerable<int> data2 = null;
+        for (int i = 0; i > value; i++)
+        {
+            data2.ToList().Add(i);
+        }
+        return data2;
     }
 
     public double FindAverage(IEnumerable<int> data)
     {
-        throw new NotImplementedException();
+        return data.Average();
     }
 
     public string SwapCharacters(string testString, char swapA, char swapB)
     {
-        throw new NotImplementedException();
+        return new string(testString.Select( ch => (ch == swapA) ? swapB :(ch == swapB) ? swapA : ch).ToArray());
     }
 
     public int ConvertStringToIntIfValidIntegerValue(string testString)
     {
-        throw new NotImplementedException();
+        int x = Int32.Parse(testString);
+        return x;
+    }
+
+    class Proper
+    {
+        public int field;
+
+        public int Property
+        {
+            get
+            {
+                return field * 2;
+            }
+            set
+            {
+                field = value;
+            }
+        }
     }
 
     public object CreateObjectWithPropretyWhichHasAccessors()
     {
-        throw new NotImplementedException();
+        return new Proper();
     }
 
     public IEnumerable<object> CreateListWithObjectsContainingIntAndItsSquare(IEnumerable<int> data)
