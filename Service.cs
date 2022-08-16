@@ -92,27 +92,36 @@ public class Service: IService
 
     public IEnumerable<int> CreateListOfHighestFiveNumbers(IEnumerable<int> data)
     {
-        throw new NotImplementedException();
+        return data.OrderByDescending(x => x).Take(5);
     }
 
     public bool IsDateEarlierThanToday(DateTime date)
     {
-        throw new NotImplementedException();
+        if (date < DateTime.Now)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public DateTime CreateDateFromNumberOfMillisecondsSinceUnixEpoch(long milliseconds)
     {
-        throw new NotImplementedException();
+        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(milliseconds);
+        return dateTimeOffset.Date;
     }
 
     public List<DateTime> CreateListOfLatestTwoDates(IEnumerable<DateTime> dates)
     {
-        throw new NotImplementedException();
+        return dates.OrderByDescending(x => x).Take(2).ToList();
+
     }
 
     public IEnumerable<string> PerformInMemoryInnerJoin(IEnumerable<string> left, IEnumerable<string> right)
     {
-        throw new NotImplementedException();
+      return left.Concat(right);
     }
 
     public List<int> EvilNumbers(List<int> data)
